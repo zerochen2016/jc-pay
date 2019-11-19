@@ -14,7 +14,11 @@ import jc.common.util.BeanFactory;
 
 @SpringBootApplication
 @EnableAutoConfiguration
-@ComponentScan
+@ComponentScan(basePackages = { 
+		"com.dbmysql",
+		"com.dbredis",
+		"jc",
+		})
 @EnableScheduling
 @EnableAsync
 public class JCPayApplication {

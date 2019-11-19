@@ -23,6 +23,8 @@ public class PayOrderInfo {
 
     private String account;
 
+    private String mobile;
+
     public String getOrderNo() {
         return orderNo;
     }
@@ -101,5 +103,13 @@ public class PayOrderInfo {
 
     public void setAccount(String account) {
         this.account = account == null ? null : account.trim();
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile == null ? null : mobile.trim();
     }
 }

@@ -12,6 +12,7 @@
     <result column="expire_time" jdbcType="BIGINT" property="expireTime" />
     <result column="user_id" jdbcType="VARCHAR" property="userId" />
     <result column="account" jdbcType="VARCHAR" property="account" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -73,7 +74,7 @@
   </sql>
   <sql id="Base_Column_List">
     order_no, qrcode_id, money, create_time, update_time, `status`, trade_no, expire_time, 
-    user_id, account
+    user_id, account, mobile
   </sql>
   <select id="selectByExample" parameterType="com.dbmysql.entity.PayOrderInfoExample" resultMap="BaseResultMap">
     select
@@ -112,11 +113,11 @@
     insert into pay_order_info (order_no, qrcode_id, money, 
       create_time, update_time, `status`, 
       trade_no, expire_time, user_id, 
-      account)
+      account, mobile)
     values (#{orderNo,jdbcType=VARCHAR}, #{qrcodeId,jdbcType=INTEGER}, #{money,jdbcType=DECIMAL}, 
       #{createTime,jdbcType=BIGINT}, #{updateTime,jdbcType=BIGINT}, #{status,jdbcType=INTEGER}, 
       #{tradeNo,jdbcType=VARCHAR}, #{expireTime,jdbcType=BIGINT}, #{userId,jdbcType=VARCHAR}, 
-      #{account,jdbcType=VARCHAR})
+      #{account,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.dbmysql.entity.PayOrderInfo">
     insert into pay_order_info
@@ -151,6 +152,9 @@
       <if test="account != null">
         account,
       </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="orderNo != null">
@@ -182,6 +186,9 @@
       </if>
       <if test="account != null">
         #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -224,6 +231,9 @@
       <if test="record.account != null">
         account = #{record.account,jdbcType=VARCHAR},
       </if>
+      <if test="record.mobile != null">
+        mobile = #{record.mobile,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -240,7 +250,8 @@
       trade_no = #{record.tradeNo,jdbcType=VARCHAR},
       expire_time = #{record.expireTime,jdbcType=BIGINT},
       user_id = #{record.userId,jdbcType=VARCHAR},
-      account = #{record.account,jdbcType=VARCHAR}
+      account = #{record.account,jdbcType=VARCHAR},
+      mobile = #{record.mobile,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -275,6 +286,9 @@
       <if test="account != null">
         account = #{account,jdbcType=VARCHAR},
       </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
     </set>
     where order_no = #{orderNo,jdbcType=VARCHAR}
   </update>
@@ -288,7 +302,8 @@
       trade_no = #{tradeNo,jdbcType=VARCHAR},
       expire_time = #{expireTime,jdbcType=BIGINT},
       user_id = #{userId,jdbcType=VARCHAR},
-      account = #{account,jdbcType=VARCHAR}
+      account = #{account,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR}
     where order_no = #{orderNo,jdbcType=VARCHAR}
   </update>
 </mapper>

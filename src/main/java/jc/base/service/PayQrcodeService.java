@@ -54,6 +54,7 @@ public interface PayQrcodeService {
 
 
 	int deletePayQrcode(PayQrcode record);
-
+	
+	PayQrcode getQRCode(String money,String uid);
 
 }

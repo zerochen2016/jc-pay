@@ -9,13 +9,14 @@ import java.util.List;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import com.dbmysql.entity.PayConfigInfo;
 import com.dbmysql.entity.PayConfigInfoExample;
 import com.dbmysql.mapper.PayConfigInfoMapper;
 import jc.base.service.PayConfigInfoService;
 
-
+@Service
 public class PayConfigInfoServiceImpl implements PayConfigInfoService {
 
 

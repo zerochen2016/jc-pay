@@ -1,26 +1,35 @@
 package jc.base.service.impl;
 
 
-import jc.mybatis.extension.util.ExampleBuildUtil;
-import jc.mybatis.extension.util.PageModel;
-
-
+import java.math.BigDecimal;
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
+
 import com.dbmysql.entity.PayOrderInfo;
 import com.dbmysql.entity.PayOrderInfoExample;
+import com.dbmysql.entity.PayQrcode;
+import com.dbmysql.entity.PayQrcodeExample;
 import com.dbmysql.mapper.PayOrderInfoMapper;
+import com.dbmysql.mapper.PayQrcodeMapper;
+
 import jc.base.service.PayOrderInfoService;
+import jc.common.util.DateUtil;
+import jc.common.util.RandomUtil;
+import jc.mybatis.extension.util.ExampleBuildUtil;
+import jc.mybatis.extension.util.PageModel;
+import jc.pay.cache.CacheInternal;
 
-
+@Service
 public class PayOrderInfoServiceImpl implements PayOrderInfoService {
 
 
 	@Autowired
 	PayOrderInfoMapper payOrderInfoMapper;
+	@Autowired
+	PayQrcodeMapper payQrcodeMapper;
 
 
 	@Override
@@ -163,5 +172,74 @@ public class PayOrderInfoServiceImpl implements PayOrderInfoService {
 		return this.payOrderInfoMapper.deleteByExample(example);
 	}
 
-
+	@Override
+	public boolean checkOrder(String usingId) {
+		PayOrderInfoExample example = new PayOrderInfoExample();
+		example.createCriteria().andUserIdEqualTo(usingId);
+		example.setLimitStart(0);
+		example.setLimitLength(1);
+		List<PayOrderInfo> ois = this.payOrderInfoMapper.selectByExample(example);
+		if(!CollectionUtils.isEmpty(ois)) {
+			if(ois.get(0).getStatus() == 2) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	@Override
+	public PayOrderInfo create(Integer qrcodeId, String money, String tradeNo, String userId, String account) {
+		long time = DateUtil.getSystemTimeLong();
+		PayOrderInfo order = new PayOrderInfo();
+		order.setOrderNo(RandomUtil.getRandomChar("OR", 20));
+		order.setMoney(new BigDecimal(money));
+		order.setQrcodeId(qrcodeId);
+		order.setStatus(1);
+		order.setCreateTime(time);
+		order.setUpdateTime(time);
+		order.setExpireTime(time + CacheInternal.orderExpireTimeMilliSecond());
+		order.setTradeNo(tradeNo);
+		order.setAccount(account);
+		order.setUserId(userId);
+		this.payOrderInfoMapper.insertSelective(order);
+		return order;
+	}
+	
+	@Override
+	public PayOrderInfo successCallback(String account,String money) {
+		PayQrcodeExample example = new PayQrcodeExample();
+		example.createCriteria().andAccountEqualTo(account).andMoneyEqualTo(money);
+		List<PayQrcode> qrs = this.payQrcodeMapper.selectByExample(example);
+		if(CollectionUtils.isEmpty(qrs)) {
+			return null;
+		}
+		PayQrcode qr = qrs.get(0);
+		long now = DateUtil.getSystemTimeLong();
+		PayOrderInfoExample example1 = new PayOrderInfoExample();
+		example1.createCriteria().andQrcodeIdEqualTo(qr.getId()).andStatusEqualTo(1).andExpireTimeGreaterThanOrEqualTo(now);
+		example1.setOrderByClause("create_time DESC");
+		List<PayOrderInfo> orders = this.payOrderInfoMapper.selectByExample(example1);
+		if(CollectionUtils.isEmpty(orders)) {
+			return null;
+		}
+		PayOrderInfo order = orders.get(0);
+		PayOrderInfo update = new PayOrderInfo();
+		update.setOrderNo(order.getOrderNo());
+		update.setStatus(2);
+		int up = this.payOrderInfoMapper.updateByPrimaryKeySelective(update);
+		if(up < 0) {
+			return null;
+		}
+		return order;
+		
+	}
+	
+	@Override
+	public boolean checkPay(String orderNo) {
+		PayOrderInfo order = this.payOrderInfoMapper.selectByPrimaryKey(orderNo);
+		if(order != null && order.getStatus() == 2) {
+			return true;
+		}
+		return false;
+	}
 }

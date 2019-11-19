@@ -55,5 +55,12 @@ public interface PayOrderInfoService {
 
 	int deletePayOrderInfo(PayOrderInfo record);
 
+	PayOrderInfo create(Integer qrcodeId, String money, String tradeNo, String userId, String account);
+
+	PayOrderInfo successCallback(String account, String money);
+
+	boolean checkOrder(String usingId);
+
+	boolean checkPay(String orderNo);
 
 }

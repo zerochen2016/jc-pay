@@ -71,10 +71,6 @@ public class CacheInternal {
 		return CONFIG_INFO.get("PAY_PUBLIC_KEY");
 	}
 	
-	public static String payNotifyUrl() {
-		return CONFIG_INFO.get("PAY_NOTIFY_URL");
-	}
-	
 	public static String mainColor() {
 		return CONFIG_INFO.get("MAIN_COLOR");
 	}
