@@ -31,8 +31,6 @@
 		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
 			connectionURL="url?characterEncoding=utf8" userId="user"
 			password="password">
-			<!-- connectionURL="jdbc:mysql://47.106.99.79:3306/live?characterEncoding=utf8" userId="live"
-			password="QWEasd1."> -->
 		</jdbcConnection>
 
 
