@@ -1,0 +1,51 @@
+server: 
+    port: 9202
+    servlet: 
+        session: 
+            timeout: 36000s
+    
+spring: 
+    resources: 
+        static-locations: classpath:/static/  
+    freemarker:
+        checkTemplateLocation: false 
+        template-loader-path: classpath:/templates/
+        suffix: .ftl
+        content-type: text/html  
+        cache: false
+    redis: 
+        host: url 
+        password: password
+        port: 6379        
+
+mysql:
+    datasource: 
+        master: 
+            url: url
+            username: user
+            password: password
+            driverClassName: com.mysql.jdbc.Driver
+            loginTimeout: 30
+            maxIdle: 15
+            minIdle: 10
+            maxActive: 300                    
+ 
+logging: 
+    level: 
+        root: INFO
+        com: 
+            dbsmysql: 
+               mapper: DEBUG
+               second: 
+                   mapper: DEBUG
+            dbmysql:
+               mapper: DEBUG
+               second:
+                   mapper: DEBUG 
+               
+mybatis:
+    mapper-locations: classpath:com/dbmysql/mapper/mapper/*.xml
+    configuration:
+        log-impl: org.apache.ibatis.logging.stdout.StdOutImpl  
+                  
+     

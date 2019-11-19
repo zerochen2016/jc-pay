@@ -1,0 +1,8 @@
+url: url
+user: user
+password: password
+driverClassName: com.mysql.jdbc.Driver
+entityPackage: com.dbmysql.entity
+entityExamplePackage: com.dbmysql.entity
+mapperPackage: com.dbmysql.mapper
+servicePackage: jc.base.service
