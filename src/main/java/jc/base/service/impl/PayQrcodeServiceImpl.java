@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -211,6 +210,8 @@ public class PayQrcodeServiceImpl implements PayQrcodeService {
 	@Override
 	public PayQrcode getQRCode(String moneyKey,String userId) {
 		long now = DateUtil.getSystemTimeLong();
+		
+		//是否有1分钟内为过期订单
 		PayQrcodeExample ex = new PayQrcodeExample();
 		ex.createCriteria().andMoneyKeyEqualTo(moneyKey).andStatusEqualTo(1).andUserIdEqualTo(userId)
 		.andOktimeGreaterThan(now + 60000l);

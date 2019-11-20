@@ -74,7 +74,8 @@
 		<p>
 		1.该二维码过期时间为：<span style="color: red">${expireTime}</span><br/>
 		2.请在有效时间内支付：<span style="color: red;font-size: 20px;font-weight: bold;">${money}元，不多不少，否则无法到账。</span><br/>
-		3.长按保存二维码或截屏，打开支付宝或微信扫码支付
+		3.长按保存二维码或截屏，打开支付宝或微信扫码支付<br>
+		4.充值不到账请联系在线客服。
 		</p>		
 	</div>
 	<#if payButtonType == 1>
