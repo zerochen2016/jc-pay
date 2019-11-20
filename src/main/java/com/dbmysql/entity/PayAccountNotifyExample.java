@@ -263,6 +263,66 @@ public class PayAccountNotifyExample {
             addCriterion("`notify` not between", value1, value2, "notify");
             return (Criteria) this;
         }
+
+        public Criteria andShowTypeIsNull() {
+            addCriterion("show_type is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andShowTypeIsNotNull() {
+            addCriterion("show_type is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andShowTypeEqualTo(Integer value) {
+            addCriterion("show_type =", value, "showType");
+            return (Criteria) this;
+        }
+
+        public Criteria andShowTypeNotEqualTo(Integer value) {
+            addCriterion("show_type <>", value, "showType");
+            return (Criteria) this;
+        }
+
+        public Criteria andShowTypeGreaterThan(Integer value) {
+            addCriterion("show_type >", value, "showType");
+            return (Criteria) this;
+        }
+
+        public Criteria andShowTypeGreaterThanOrEqualTo(Integer value) {
+            addCriterion("show_type >=", value, "showType");
+            return (Criteria) this;
+        }
+
+        public Criteria andShowTypeLessThan(Integer value) {
+            addCriterion("show_type <", value, "showType");
+            return (Criteria) this;
+        }
+
+        public Criteria andShowTypeLessThanOrEqualTo(Integer value) {
+            addCriterion("show_type <=", value, "showType");
+            return (Criteria) this;
+        }
+
+        public Criteria andShowTypeIn(List<Integer> values) {
+            addCriterion("show_type in", values, "showType");
+            return (Criteria) this;
+        }
+
+        public Criteria andShowTypeNotIn(List<Integer> values) {
+            addCriterion("show_type not in", values, "showType");
+            return (Criteria) this;
+        }
+
+        public Criteria andShowTypeBetween(Integer value1, Integer value2) {
+            addCriterion("show_type between", value1, value2, "showType");
+            return (Criteria) this;
+        }
+
+        public Criteria andShowTypeNotBetween(Integer value1, Integer value2) {
+            addCriterion("show_type not between", value1, value2, "showType");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

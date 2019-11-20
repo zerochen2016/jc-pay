@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,46 +32,88 @@ public class PayQrcodeServiceImpl implements PayQrcodeService {
 	PayQrcodeMapper payQrcodeMapper;
 	
 //	@PostConstruct
-	public void init() {
-		List<Integer> moneyList = new ArrayList<Integer>();
-		moneyList.add(3900);
-		moneyList.add(6900);
-		moneyList.add(9900);
-		moneyList.add(14900);
-		moneyList.add(19900);
-		moneyList.add(39900);
-		moneyList.add(49900);
-		moneyList.add(79900);
-		moneyList.add(99900);
-		moneyList.add(199900);
-		moneyList.add(299900);
-		moneyList.add(499900);
-		int cutPriceRange = 50;
-		moneyList.stream().forEachOrdered(money->{
-			for(int i = 0; i < cutPriceRange;i++) {
-				if((money + i) % 10 == 0) {
-					continue;
-				}
-				String cutPriceMoney = new BigDecimal((money + i)).divide(new BigDecimal(100),2,RoundingMode.HALF_DOWN).toString();
-				PayQrcodeExample example = new PayQrcodeExample();
-				example.createCriteria().andMoneyEqualTo(cutPriceMoney);
-				example.setLimitStart(0);
-				example.setLimitLength(1);
-				if(CollectionUtils.isEmpty(this.payQrcodeMapper.selectByExample(example))) {
-					PayQrcode record = new PayQrcode();
-					record.setAccount("laotie");
-					record.setCodeType(3);
-					record.setMoneyKey(new BigDecimal(money).divide(new BigDecimal(100),2,RoundingMode.HALF_DOWN).toString());
-					record.setMoney(cutPriceMoney);
-					record.setOktime(0l);
-					record.setQrcodeUrl("https://xcmpic.oss-cn-hongkong.aliyuncs.com/laotie.png");
-					record.setStatus(1);
-					record.setUserId("");
-					this.payQrcodeMapper.insertSelective(record);	
-				}
-			}
-		});
-	}
+//	public void init() {
+//		List<Integer> moneyList = new ArrayList<Integer>();
+//		moneyList.add(3900);
+//		moneyList.add(6900);
+//		moneyList.add(9900);
+//		moneyList.add(14900);
+//		moneyList.add(19900);
+//		moneyList.add(39900);
+//		moneyList.add(49900);
+//		moneyList.add(79900);
+//		moneyList.add(99900);
+//		moneyList.add(199900);
+//		moneyList.add(299900);
+//		moneyList.add(499900);
+//		int cutPriceRange = 50;
+//		moneyList.stream().forEachOrdered(money->{
+//			for(int i = 0; i < cutPriceRange;i++) {
+//				if((money + i) % 10 == 0) {
+//					continue;
+//				}
+//				String cutPriceMoney = new BigDecimal((money + i)).divide(new BigDecimal(100),2,RoundingMode.HALF_DOWN).toString();
+//				PayQrcodeExample example = new PayQrcodeExample();
+//				example.createCriteria().andMoneyEqualTo(cutPriceMoney);
+//				example.setLimitStart(0);
+//				example.setLimitLength(1);
+//				if(CollectionUtils.isEmpty(this.payQrcodeMapper.selectByExample(example))) {
+//					PayQrcode record = new PayQrcode();
+//					record.setAccount("laotie");
+//					record.setCodeType(3);
+//					record.setMoneyKey(new BigDecimal(money).divide(new BigDecimal(100),2,RoundingMode.HALF_DOWN).toString());
+//					record.setMoney(cutPriceMoney);
+//					record.setOktime(0l);
+//					record.setQrcodeUrl("https://xcmpic.oss-cn-hongkong.aliyuncs.com/laotie.png");
+//					record.setStatus(1);
+//					record.setUserId("");
+//					this.payQrcodeMapper.insertSelective(record);	
+//				}
+//			}
+//		});
+//	}
+	
+//	@PostConstruct
+//	public void init() {
+//		List<Integer> moneyList = new ArrayList<Integer>();
+//		moneyList.add(3800);
+//		moneyList.add(6800);
+//		moneyList.add(9800);
+//		moneyList.add(15800);
+//		moneyList.add(19800);
+//		moneyList.add(39800);
+//		moneyList.add(49800);
+//		moneyList.add(79800);
+//		moneyList.add(99800);
+//		moneyList.add(199800);
+//		moneyList.add(300000);
+//		moneyList.add(500000);
+//		int cutPriceRange = 50;
+//		moneyList.stream().forEachOrdered(money->{
+//			for(int i = 0; i < cutPriceRange;i++) {
+//				if((money + i) % 10 == 0) {
+//					continue;
+//				}
+//				String cutPriceMoney = new BigDecimal((money + i)).divide(new BigDecimal(100),2,RoundingMode.HALF_DOWN).toString();
+//				PayQrcodeExample example = new PayQrcodeExample();
+//				example.createCriteria().andMoneyEqualTo(cutPriceMoney);
+//				example.setLimitStart(0);
+//				example.setLimitLength(1);
+//				if(CollectionUtils.isEmpty(this.payQrcodeMapper.selectByExample(example))) {
+//					PayQrcode record = new PayQrcode();
+//					record.setAccount("DAMING");
+//					record.setCodeType(3);
+//					record.setMoneyKey(new BigDecimal(money).divide(new BigDecimal(100),2,RoundingMode.HALF_DOWN).toString());
+//					record.setMoney(cutPriceMoney);
+//					record.setOktime(0l);
+//					record.setQrcodeUrl("https://xcmpic.oss-cn-hongkong.aliyuncs.com/yunshanghua.png");
+//					record.setStatus(1);
+//					record.setUserId("");
+//					this.payQrcodeMapper.insertSelective(record);	
+//				}
+//			}
+//		});
+//	}
 	
 	@Override
 	public PageModel<PayQrcode> pagePayQrcode(PayQrcode record, PageModel<PayQrcode> pageModel) {
@@ -210,7 +253,6 @@ public class PayQrcodeServiceImpl implements PayQrcodeService {
 	@Override
 	public PayQrcode getQRCode(String moneyKey,String userId) {
 		long now = DateUtil.getSystemTimeLong();
-		
 		//是否有1分钟内为过期订单
 		PayQrcodeExample ex = new PayQrcodeExample();
 		ex.createCriteria().andMoneyKeyEqualTo(moneyKey).andStatusEqualTo(1).andUserIdEqualTo(userId)
@@ -221,6 +263,37 @@ public class PayQrcodeServiceImpl implements PayQrcodeService {
 		}
 		PayQrcodeExample example = new PayQrcodeExample();
 		example.createCriteria().andMoneyKeyEqualTo(moneyKey).andStatusEqualTo(1).andOktimeLessThanOrEqualTo(now);
+		List<PayQrcode> list = this.payQrcodeMapper.selectByExample(example);
+		if(!CollectionUtils.isEmpty(list)) {
+			Collections.shuffle(list);
+			PayQrcode record = list.get(0);
+			PayQrcode update = new PayQrcode();
+			update.setId(record.getId());
+			long oktime = now + CacheInternal.orderExpireTimeMilliSecond();
+			update.setOktime(oktime);
+			update.setUserId(userId);
+			int up = this.payQrcodeMapper.updateByPrimaryKeySelective(update);
+			record.setOktime(oktime);
+			if(up>0) {
+				return record;
+			}
+		}
+		return null;
+	}
+	
+	@Override
+	public PayQrcode getQRCode(String moneyKey, String userId, String account) {
+		long now = DateUtil.getSystemTimeLong();
+		//是否有1分钟内为过期订单
+		PayQrcodeExample ex = new PayQrcodeExample();
+		ex.createCriteria().andMoneyKeyEqualTo(moneyKey).andStatusEqualTo(1).andUserIdEqualTo(userId)
+		.andAccountEqualTo(account).andOktimeGreaterThan(now + 60000l);
+		List<PayQrcode> el = this.payQrcodeMapper.selectByExample(ex);
+		if(!CollectionUtils.isEmpty(el)) {
+			return el.get(0);
+		}
+		PayQrcodeExample example = new PayQrcodeExample();
+		example.createCriteria().andMoneyKeyEqualTo(moneyKey).andAccountEqualTo(account).andStatusEqualTo(1).andOktimeLessThanOrEqualTo(now);
 		List<PayQrcode> list = this.payQrcodeMapper.selectByExample(example);
 		if(!CollectionUtils.isEmpty(list)) {
 			Collections.shuffle(list);

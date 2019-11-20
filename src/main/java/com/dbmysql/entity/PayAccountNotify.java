@@ -5,6 +5,8 @@ public class PayAccountNotify {
 
     private String notify;
 
+    private Integer showType;
+
     public String getAccount() {
         return account;
     }
@@ -19,5 +21,13 @@ public class PayAccountNotify {
 
     public void setNotify(String notify) {
         this.notify = notify == null ? null : notify.trim();
+    }
+
+    public Integer getShowType() {
+        return showType;
+    }
+
+    public void setShowType(Integer showType) {
+        this.showType = showType;
     }
 }

@@ -206,6 +206,25 @@ public class PayOrderInfoServiceImpl implements PayOrderInfoService {
 	}
 	
 	@Override
+	public PayOrderInfo create(Integer qrcodeId, String money, String tradeNo, String userId, String account, String mobile) {
+		long time = DateUtil.getSystemTimeLong();
+		PayOrderInfo order = new PayOrderInfo();
+		order.setOrderNo(RandomUtil.getRandomChar("OR", 20));
+		order.setMoney(new BigDecimal(money));
+		order.setQrcodeId(qrcodeId);
+		order.setStatus(1);
+		order.setCreateTime(time);
+		order.setUpdateTime(time);
+		order.setExpireTime(time + CacheInternal.orderExpireTimeMilliSecond());
+		order.setTradeNo(tradeNo);
+		order.setAccount(account);
+		order.setUserId(userId);
+		order.setMobile(mobile);
+		this.payOrderInfoMapper.insertSelective(order);
+		return order;
+	}
+	
+	@Override
 	public PayOrderInfo successCallback(String account,String money) {
 		PayQrcodeExample example = new PayQrcodeExample();
 		example.createCriteria().andAccountEqualTo(account).andMoneyEqualTo(money);
