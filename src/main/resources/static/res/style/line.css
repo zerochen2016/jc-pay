@@ -1,0 +1,53 @@
+@charset "utf-8";
+/*================================
+            线路样式
+==================================*/
+.table-list .off-site,.table-list .on-site{background:url(../images/index/icon_line.png) no-repeat;padding-left:25px;margin:0 0 5px 5px}
+.table-list .on-site{background-position:left top}
+.table-list .off-site{background-position:left bottom}
+.table-list .site-count{text-align:right;padding-right:10px;color:#999;}
+.add-line-bx{display:table;width:100%}
+.add-line-bx .tips{padding-top: 15px;font-size: 14px;color:#8d8d8d;}
+.add-line-bx .tips i{color:#00aeef;}
+.add-line-offsite,.add-line-onsite{display:table-cell;vertical-align:top;word-wrap:break-word;word-break:break-all;width:50%;height:200px}
+.add-line-onsite{border-right:1px #eee solid;padding-right:15px}
+.add-line-offsite{padding-left:15px}
+.add-line-btn-bar{text-align:center;margin:15px 0 0}
+.add-line-btn-bar .btn{padding:8px 30px!important;border-radius:3px}
+.add-line-bx .site-list{margin-top:15px;border:1px #d9dadc dashed}
+.add-line-bx .site-list li{height:64px;padding:8px;font-size:14px;border-radius:5px;cursor:pointer;border-top:1px #d9dadc dashed}
+.add-line-bx .site-list li:first-child{border-top:0}
+.add-line-bx .site-list li:hover{background-color:#f5f5f5}
+.add-line-bx .site-list li dl{display:table;width:100%}
+.add-line-tips{color:#31708f;border:2px #d9dadc dotted;font-size:14px;text-align:center;padding:100px 0;border-radius:3px;margin:10px 0 0}
+.add-line-bx .site-list li dl dd,.add-line-bx .site-list li dl dt{display:table-cell;vertical-align:middle;word-wrap:break-word;word-break:break-all;height:64px}
+.add-line-bx .site-list li dl dt{text-align:left;padding-left:74px}
+.add-line-bx .site-list li dl dd{text-align:right;padding-right:8px}
+.add-line-onsite .site-list li dl dt{background:url(../images/index/icon_bus_onsite.png) no-repeat;background-position:left top}
+.add-line-offsite .site-list li dl dt{background:url(../images/index/icon_bus_offsite.png) no-repeat;background-position:left top}
+.add-line-offsite .site-list li:hover dl dt,.add-line-onsite .site-list li:hover dl dt{background-position:left bottom}
+.add-line-bx .site-list .site-name {width:326px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;margin-bottom:12px; font-weight: bold;}
+.add-line-bx .site-list .time-box label {font-size:14px; display: inline-block;padding-right: 8px;color:#8d8d8d;}
+.add-line-bx .site-list .time-box select{background-color: white !important;border-right-width:0;padding:3px !important; height:auto !important;}
+#unitePriceInput{background-color:#f5f5f5; padding:8px 15px; margin: 15px 0 0;border-radius: 3px;}
+#unitePriceInput label {display: inline-block;padding-right: 8px;margin-bottom: 0;}
+#unitePriceInput input {margin-bottom: 0}
+.line-list {margin-top: 15px}
+.line-list td{vertical-align: middle}
+.line-list .onsite, .line-list .offsite {background:url(../images/index/icon_line.png) no-repeat;padding-left:25px; }
+.line-list .onsite{background-position:left top}
+.line-list .offsite{background-position:left bottom}
+.line-list .datetime span{color: #e0e0e0}
+.table-form {margin-top: 15px; margin-bottom: 0; }
+.table-form td, .table-form th {border-bottom: 1px solid #eee;border-top: 0;font-size: 14px}
+.table-form th{text-align: right;width: 120px;padding-right:30px;font-weight: normal;}
+.table-form .select-multi-box{padding:0 0 8px;}
+.table-form .select-multi-box .title{color: #8d8d8d}
+.table-form .select-multi-box .value{padding-right: 50px;}
+.table-form .select-multi-box .tips{color:#8d8d8d}
+.ticket-list {width: 55%;margin-bottom:8px;}
+.ticket-list th{border-radius: 5px;}
+.ticket-list td{border: 0;}
+.ticket-list td a{color:#373636;}
+.ticket-list td a:hover{color:#ff0000;}
+.ticket-list span{color:#8d8d8d}

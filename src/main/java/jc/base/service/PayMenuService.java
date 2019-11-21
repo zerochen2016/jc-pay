@@ -2,12 +2,15 @@ package jc.base.service;
 
 
 import jc.mybatis.extension.util.PageModel;
-
+import jc.pay.common.result.JsonResult;
 
 import java.util.List;
+
+import org.springframework.stereotype.Service;
+
 import com.dbmysql.entity.PayMenu;
 
-
+@Service
 public interface PayMenuService {
 
 
@@ -55,5 +58,6 @@ public interface PayMenuService {
 
 	int deletePayMenu(PayMenu record);
 
+	JsonResult listMenuResult(String account);
 
 }

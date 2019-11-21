@@ -1,0 +1,100 @@
+@charset "utf-8";
+
+.version-box {
+	width: 840px;
+	margin: 0 auto;
+}
+.version-box .head {
+	font-size: 24px;
+	color: #5a7587;
+	padding-left: 127px;
+	line-height: 40px;
+	background: url(../images/version/icon_head.png) 100px 8px no-repeat;
+}
+.version-box .head span {
+	padding-left: 10px;
+}
+.year-box {
+	background: url(../images/version/line.png) 100px 0 repeat-y;
+	padding: 10px 0 20px;
+}
+.year-box .year {
+	width: 127px;
+	position: relative;
+	background: url(../images/version/circle_solid.png) right center no-repeat;
+	cursor: pointer;
+}
+.year-box .year h3 {
+	font-size: 18px;
+	color: #999;
+	font-weight: normal;
+	margin: 0;
+	padding: 0;
+}
+.year-box .year .arrow {
+	width: 9px;
+	height: 9px;
+	background:url(../images/version/arrow.png) top center no-repeat;
+	position: absolute;
+	right: 50px;
+	top: 16px;
+}
+.year-box .year .end {
+	background-color: white;
+	width: 27px;
+	height: 33px;
+	position: absolute;
+	top: 27px;
+	right: 0;
+}
+.year-box .chronicle {
+	overflow: auto;
+	padding: 20px 0;
+	display: none;
+}
+.year-box .chronicle .month {
+	width: 127px;
+	float: left;
+	color: #999;
+	font-size: 12px;
+	background: url(../images/version/circle_hollow.png) right center no-repeat;
+	padding: 13px 0;
+}
+.fold .year .end {
+	display: none;
+}
+.fold .year h3 {
+	color: #698191;
+	font-weight: bold;
+}
+.fold .year .arrow {
+	background:url(../images/version/arrow.png) bottom center no-repeat;
+}
+.fold .year {
+	background-image:none;
+}
+.year-box .chronicle .month span {
+	text-align: right;
+	padding-right: 30px;
+	display: block;
+}
+.year-box .chronicle .info {
+	width: 700px;
+	float: right;
+	font-size: 14px;
+	color: #999;
+}
+.year-box .chronicle .info h3 {
+	font-weight: normal;
+	color: #5a7587;
+	font-size: 18px;
+	margin: 0;
+	padding: 0;
+}
+/* 蓝色样式 */
+.year-box .blue .month {
+	background: url(../images/version/circle_hollow_blue.png) right center no-repeat;
+}
+.year-box .blue .info h3 {
+	color: #40b8ef;
+}

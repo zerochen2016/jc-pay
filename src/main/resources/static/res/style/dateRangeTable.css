@@ -1,0 +1,31 @@
+@charset "utf-8";
+/*================================
+            日期范围控件
+==================================*/
+.date-range{position:relative;-moz-user-select:none;-webkit-user-select:none;-khtml-user-select:none;user-select:none}
+.date-range .next-month,.date-range .prev-month{position:absolute;top:15px;color:#333;padding:5px 19px}
+.date-range .prev-month i{margin-right:10px;font-size:12px}
+.date-range .next-month i{margin-left:10px;font-size:12px}
+.date-range .next-month:hover,.date-range .prev-month:hover{text-decoration:none}
+.date-range .prev-month{left:0}
+.date-range .next-month{right:0}
+.date-range .disabled-btn{color:#d4d4d4}
+.date-range-table{width:100%;font-size:14px}
+.date-range-table caption{padding:15px 0;font-size:18px}
+.date-range-table th{height:40px;text-align:center;font-weight:600;background-color:#f4f5f9;border:1px #e7e7eb solid}
+.date-range-table td{width:14%;height:100px;text-align:center;vertical-align:middle;border:1px #e7e7eb solid;position:relative}
+.date-range-table .invalid{background-color:#f6f6f6}
+.date-range-table .day{font-size:18px}
+.date-range-table .small-day{position:absolute;top:5px;right:8px;font-size:16px}
+.date-range-table .issue{text-align:left;padding-left:8px;line-height:20px;}
+.date-range-table .selected,.date-range-table .selected:hover{background:url(../images/dateRangeTable/icon_selected.png) right bottom no-repeat}
+.date-range-table .disable{color:#d4d4d4}
+.date-range-table .enable{cursor:pointer}
+.date-range-table .enable:hover{background-color:#eef8ff}
+.date-range-table .readonly{cursor:default;color:#d4d4d4 !important}
+.date-range-table .readonly .issue{color:#d4d4d4 !important}
+.date-range-table .readonly .issue span{color:#d4d4d4 !important}
+.date-range-table .readonly:hover{background-color:transparent}
+.date-range-table .enable .issue{color:#3698e3}
+.date-range-table .enable .issue span{color:#090}
+.date-range-table .today,.date-range-table .today:hover{background-color:#fefbeb}

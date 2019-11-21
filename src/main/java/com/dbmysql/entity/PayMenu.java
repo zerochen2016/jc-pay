@@ -1,5 +1,7 @@
 package com.dbmysql.entity;
 
+import java.util.List;
+
 public class PayMenu {
     private Integer id;
 
@@ -10,6 +12,8 @@ public class PayMenu {
     private Integer pid;
 
     private Integer status;
+    
+    private List<PayMenu> subMenus;
 
     public Integer getId() {
         return id;
@@ -50,4 +54,13 @@ public class PayMenu {
     public void setStatus(Integer status) {
         this.status = status;
     }
+
+	public List<PayMenu> getSubMenus() {
+		return subMenus;
+	}
+
+	public void setSubMenus(List<PayMenu> subMenus) {
+		this.subMenus = subMenus;
+	}
+    
 }

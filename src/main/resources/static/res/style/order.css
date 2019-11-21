@@ -1,0 +1,16 @@
+@charset "utf-8";
+/*================================
+            订单
+==================================*/
+#dataList .not-data{margin-bottom:20px;border:1px #faebcc solid;color:#8a6d3b;background-color:#fcf8e3 !important;text-align:center;padding:20px 8px}
+.order-list-box{border:1px #ddd solid;margin-bottom:30px;}
+.order-list-box>thead>tr>th{padding:0 8px;line-height:40px;font-weight:600;color:#2b4b7d;background-color:#f4f5f9;}
+.order-list-box .th{height:40px;padding:1px 0 0;background-color:#f5f5f5}
+.order-list-box>tbody>tr>td{padding:8px 0;text-align:center;}
+.order-list-box td{line-height:23px;}
+.order-list-box .order-people-box{padding:1px;}
+.order-list-box .order-people-list th,.order-list-box .order-people-list td{padding:8px 0;text-align:center;border:1px #ddd solid;}
+.order-list-box .order-people-list th{background-color:#f5f5f5}
+.order-list-box .price{font-size: 16px;color:#d74641}
+.order-list-box .create-time{margin-right:80px;font-size:13px;}
+.order-list-box .fa-wechat{color:#44b549}

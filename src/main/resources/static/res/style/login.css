@@ -1,0 +1,37 @@
+@charset "utf-8";
+
+/*================================
+            通用样式
+==================================*/
+*{word-wrap:break-word;outline:0;-webkit-font-smoothing:antialiased}
+body,html{height:100%;margin:0;-webkit-text-size-adjust:none}
+body,button,input,textarea{background:white;font-size:12px;font-family:"Microsoft YaHei","Lucida Grande","Lucida Sans Unicode",Tahoma,Helvetica,Arial,sans-serif;color:#333;}
+body,dd,dl,dt,fieldset,form,li,ol,ul{margin:0;padding:0}
+h2,h5,h6{margin:0;}
+input{outline:0}
+li,ul{margin:0;padding:0;border:0;list-style-image:none;list-style-type:none}
+.container{width:980px;margin:0 auto}
+
+.ui-header{height:100px;background-color:#233646}
+.ui-header .logo{width:150px;height:100px;float:left;background:url(/static/images/logo.png) center no-repeat}
+.ui-login-box{border:1px #d4d4d4 solid;margin:60px auto 120px;border-radius:3px}
+.ui-login-box .title-bar{margin:15px 60px 0;padding:10px 0 20px 8px;border-bottom:1px #e5e5e5 solid}
+.ui-login-box .title-bar h2{font-size:24px;font-weight:400}
+.login-content{padding:0 60px;overflow:auto}
+.login-form{width:480px;padding-top:60px;padding-bottom:30px;float:left}
+.login-form dl{clear:both;overflow:auto;margin-bottom:15px}
+.login-form dl dt{text-align:right;width:14%;padding-right:2%;float:left}
+.login-form dl dt label{line-height:34px;font-size:14px}
+.login-form dl dd{text-align:left;width:83%;float:right;padding-top:3px}
+.login-form .password,.login-form .username{width:250px;padding: 6px;}
+.login-form .captcha-img{margin-top:8px;border:1px #d4d4d4 solid;cursor:pointer}
+.login-form .captcha-refresh{margin-left:20px;font-size:14px;color:#3698e3}
+.login-form .captcha-refresh:hover{color:#b22222}
+.login-form .login-btn-box{text-align:right;width:346px;float:left}
+.login-form .login-btn-box .btn{padding:8px 30px}
+.login-form .captcha{width:120px}
+.login-tip{width:378px;height:326px;float:right;padding-top:20px;text-align:center;border-left:1px #e5e5e5 solid;margin:26px 0}
+.login-tip .qrcode-tip{font-size: 16px; line-height: 25px;color:#9c9c9c}
+.login-tip .qrcode-tip h3{font-size:22px;margin:0;padding:0;padding-bottom:12px;color:#166099;font-weight:400}
+.login-tip .qrcode{width:180px;height:180px}
+.ui-footer {height:50px;border-top: 2px #233646 solid; text-align: center; color: #999; font-size: 18px;}

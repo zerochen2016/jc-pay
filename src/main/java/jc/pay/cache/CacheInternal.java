@@ -1,6 +1,8 @@
 package jc.pay.cache;
 
+import java.util.Arrays;
 import java.util.TreeMap;
+import java.util.TreeSet;
 
 import javax.annotation.PostConstruct;
 
@@ -81,5 +83,9 @@ public class CacheInternal {
 	
 	public static int payButtonType() {
 		return Integer.valueOf(CONFIG_INFO.get("PAY_BUTTON_TYPE"));
+	}
+	
+	public static TreeSet<String> whiteListIP(){
+		return new TreeSet<String>(Arrays.asList(CONFIG_INFO.get("WHITE_LIST_IP").split(",")));
 	}
 }

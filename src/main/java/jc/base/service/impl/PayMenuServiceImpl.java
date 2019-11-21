@@ -3,24 +3,31 @@ package jc.base.service.impl;
 
 import jc.mybatis.extension.util.ExampleBuildUtil;
 import jc.mybatis.extension.util.PageModel;
-
+import jc.pay.common.result.JsonResult;
+import jc.pay.common.result.SystemReturn;
 
 import java.util.List;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
+
 import com.dbmysql.entity.PayMenu;
 import com.dbmysql.entity.PayMenuExample;
 import com.dbmysql.mapper.PayMenuMapper;
+import com.dbmysql.mapper.flexible.PayMenuFlexibleMapper;
+
 import jc.base.service.PayMenuService;
 
-
+@Service
 public class PayMenuServiceImpl implements PayMenuService {
 
 
 	@Autowired
 	PayMenuMapper payMenuMapper;
+	@Autowired
+	PayMenuFlexibleMapper payMenuFlexibleMapper; 
 
 
 	@Override
@@ -158,5 +165,16 @@ public class PayMenuServiceImpl implements PayMenuService {
 		return this.payMenuMapper.deleteByExample(example);
 	}
 
-
+	@Override
+	public JsonResult listMenuResult(String account) {
+		List<PayMenu> menus = this.payMenuFlexibleMapper.listMenuResult(account,0);
+		if(menus==null||menus.isEmpty()) {
+			return JsonResult.setReturn(SystemReturn.FAIL);
+		}
+		for(PayMenu menu:menus) {
+			List<PayMenu> subMenus = this.payMenuFlexibleMapper.listMenuResult(account,menu.getId());
+			menu.setSubMenus(subMenus);
+		}
+		return JsonResult.setReturn(SystemReturn.OK,menus);
+	}
 }

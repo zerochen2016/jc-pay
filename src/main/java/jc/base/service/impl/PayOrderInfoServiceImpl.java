@@ -37,6 +37,7 @@ public class PayOrderInfoServiceImpl implements PayOrderInfoService {
 		PayOrderInfoExample example = new PayOrderInfoExample();
 		ExampleBuildUtil.buildExample(PayOrderInfo.class, record, example);
 		ExampleBuildUtil.setPageParam(pageModel, example);
+		example.setOrderByClause("create_time DESC");
 		List<PayOrderInfo> list = this.payOrderInfoMapper.selectByExample(example);
 		long totalCount = this.payOrderInfoMapper.countByExample(example);
 		return pageModel.build(list, totalCount, pageModel);

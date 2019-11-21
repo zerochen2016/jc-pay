@@ -11,6 +11,7 @@ public class InterceptorRegister implements WebMvcConfigurer{
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(new PayInterceptor()).addPathPatterns("/pay/**");
+		registry.addInterceptor(new AdminInterceptor()).addPathPatterns("/admin/**");
 		WebMvcConfigurer.super.addInterceptors(registry);
 	}
 

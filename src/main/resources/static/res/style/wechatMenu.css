@@ -1,0 +1,52 @@
+@charset "utf-8";
+/* 左右布局 */
+.menu-setting-box{width:1050px;overflow:auto;margin-left:20px}
+.menu-setting-box .menu-preview{float:left;position:relative}
+.menu-setting-box .menu-form{float:right;width:715px;text-align:left}
+
+/* 左边预览状态 */
+.mobile-menu-preview{position:relative;width:317px;height:580px;background:transparent url(../images/wechatMenu/bg_mobile_head.png) no-repeat 0 0;background-position:0 0;border:1px solid #e7e7eb}
+.mobile-menu-preview .mobile_hd{color:#fff;text-align:center;padding-top:32px;font-size:15px;width:auto;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;word-wrap:normal;margin:0 55px}
+.mobile-menu-preview .mobile-bd{position:absolute;bottom:0;left:0;right:0;border-top:1px solid #e7e7eb;background:transparent url(../images/wechatMenu/bg_mobile_foot.png) no-repeat 0 0;background-position:0 0;background-repeat:no-repeat;padding-left:43px}
+.parent-menu-item{line-height:50px;text-align:center;float:left;position:relative}
+.parent-menu-item .parent-menu-link{display:block;width:auto;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;word-wrap:normal;color:#616161;text-decoration:none;border-right:1px solid #e7e7eb;font-size:14px}
+.mobile-bd .no_extra .parent-menu-link,.add-parent-menu .parent-menu-link{border-right:0;}
+.parent-menu-item .parent-menu-link:hover{color:#222}
+.mobile-menu-preview .icon{display:inline-block;width:14px;height:14px;vertical-align:middle;margin-top:-2px;background:url(../images/wechatMenu/icon_plus.png) top center no-repeat}
+.mobile-menu-preview .current .parent-menu-link{border:1px solid #44b549;line-height:48px;background-color:#fff;color:#44b549}
+.mobile-menu-preview .current .icon{background-position:bottom center}
+.mobile-menu-preview .zone0{width:100%}
+.mobile-menu-preview .zone1{width:50%}
+.mobile-menu-preview .zone2{width:33.3333%}
+.mobile-menu-preview .zone3{width:33.3333%}
+.parent-menu-item .sub-menu-box{position:absolute;bottom:50px;left:-1px;bottom:60px;width:100%;border:1px solid #d0d0d0;border-bottom:0;background-color:#fafafa;border-top-width:0}
+.parent-menu-item .sub-menu-box .arrow{position:absolute;left:50%;margin-left:-6px}
+.parent-menu-item .sub-menu-box .arrow-out{bottom:-6px;display:inline-block;width:0;height:0;border-width:6px;border-style:dashed;border-color:transparent;border-bottom-width:0;border-top-color:#d0d0d0;border-top-style:solid}
+.parent-menu-item .sub-menu-box .arrow-in{bottom:-5px;display:inline-block;width:0;height:0;border-width:6px;border-style:dashed;border-color:transparent;border-bottom-width:0;border-top-color:#fafafa;border-top-style:solid}
+.parent-menu-item .sub-menu-box ul{border-top:1px solid #d0d0d0}
+.parent-menu-item .sub-menu-box ul li{line-height:44px;border-bottom:1px solid #d0d0d0}
+.parent-menu-item .sub-menu-box ul li a{display:block;width:auto;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;word-wrap:normal;color:#616161;text-decoration:none;font-size:14px}
+.parent-menu-item .sub-menu-box ul li a:hover{background-color:#eee;color:#222}
+.parent-menu-item .sub-menu-box ul li .icon{background-position:top center}
+.parent-menu-item .sub-menu-box ul .current{border:0}
+.parent-menu-item .sub-menu-box ul .current a,.parent-menu-item .sub-menu-box ul .current a:hover{border:1px solid #44b549;background-color:#fff;color:#44b549;margin:-1px;z-index:1;position:relative}
+
+/*右边的表单*/
+.menu-form{font-size:14px}
+.menu-form .menu-initial-tips{text-align:center;color:#8d8d8d;border:2px #eee dotted;line-height:578px}
+.edit-inner{background-color:#f5f5f6;border:1px solid #e7e7eb;min-height:582px;position:relative}
+.editor-arrow-wrap{position:absolute;left:0;top:545px}
+.editor-arrow-wrap .editor-arrow{display:inline-block;width:0;height:0;border-width:12px;border-style:dashed;border-color:transparent;border-left-width:0;border-right-color:#e7e7eb;border-right-style:solid;position:absolute}
+.editor-arrow-wrap .editor-arrow-out{left:-12px}
+.editor-arrow-wrap .editor-arrow-in{left:-11px;border-right-color:#f5f5f6}
+.edit-inner .delete-btn{position:absolute;top:20px;right:20px}
+.edit-inner .edit-info{border-bottom:1px solid #e7e7eb;margin:10px 10px 30px;padding:10px}
+.edit-inner .menu-name{width:300px}
+.edit-inner .frm-tips{padding:0}
+.edit-inner .frm-text{padding:0 20px}
+.edit-inner .frm-text textarea{line-height:22px !important;font-size:14px}
+.edit-inner .menu-url{width:450px}
+.edit-inner .btn-select{padding:5px 15px;position:relative;top:-3px;}
+.set-menu-btn-bar{width:1050px;margin-left:20px;padding:10px 0 0;overflow:auto}
+.set-menu-btn-bar .left{float:left}
+.set-menu-btn-bar .right{float:right}

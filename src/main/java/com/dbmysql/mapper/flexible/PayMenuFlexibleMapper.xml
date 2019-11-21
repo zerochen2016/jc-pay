@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dbmysql.mapper.flexible.PayMenuFlexibleMapper">
+  <resultMap id="BaseResultMap" type="com.dbmysql.entity.PayMenu">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="pid" jdbcType="INTEGER" property="pid" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+  </resultMap>
+  
+  <select id="listMenuResult" resultMap="BaseResultMap">
+	SELECT 
+		m.id,m.name,m.url,m.pid,m.`status` 
+	FROM pay_operator o 
+	INNER JOIN pay_role_info r ON o.role_id = r.id 
+	INNER JOIN pay_role_menu_relate rm on r.id = rm.role_id 
+	INNER JOIN pay_menu m ON rm.menu_id = m.id
+	WHERE o.account = #{account} AND m.`status` = 1 AND o.`status` = 1 AND m.pid = #{pid}
+	ORDER BY rm.menu_id asc
+  </select>       
+</mapper>

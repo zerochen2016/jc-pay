@@ -1,4 +1,4 @@
-package jc.base.controller;
+package jc.pay.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
