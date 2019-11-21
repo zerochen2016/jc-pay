@@ -26,6 +26,7 @@
 				<input type="hidden" id="page" name="page">
 				平台标识：<input type="text" id="account" name="account" value="${(record.account)!''}" placeholder="请输入平台标识">
 				用户ID：<input type="text" id="userId" name="userId" value="${(record.userId)!''}" placeholder="请输入用户ID">
+				手机号码：<input type="text" id="mobile" name="mobile" value="${(record.mobile)!''}" placeholder="请输入手机号码">
 				交易订单：<input type="text" id="tradeNo" name="tradeNo" value="${(record.tradeNo)!''}" placeholder="请输入交易订单">
 				<a class="btn btn-success" id="search">搜索</a>			
 				<input type="hidden" id="page" name="page">
