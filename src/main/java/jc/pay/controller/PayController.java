@@ -89,42 +89,6 @@ public class PayController {
 		return "pay/zbpay";
 	}
 	
-	@RequestMapping("/zb/{userId}/{tradeNo}/{moneyKey}")
-	public String pay(@PathVariable String moneyKey, @PathVariable String tradeNo, @PathVariable String userId, Model model) {
-		PayOrderInfo exist = this.payOrderInfoServiceImpl.getPayOrderInfoByTradeNo(tradeNo);
-		if(exist != null) {
-			return "pay/pay_get_new";
-		}
-		PayQrcode qrcode = this.payQrcodeServiceImpl.getQRCode(moneyKey,userId);
-		if(qrcode == null) {
-			return "pay/pay_no";
-		}
-		PayOrderInfo order = this.payOrderInfoServiceImpl.create(qrcode.getId(), qrcode.getMoney(), tradeNo, userId, qrcode.getAccount());
-		if(order == null) {
-			return null;
-		}
-		model.addAttribute("qrCode", qrcode.getQrcodeUrl());
-		model.addAttribute("time",CacheInternal.orderExpireTimeMinutes());
-		model.addAttribute("expireTime", DateUtil.getDateString(qrcode.getOktime(), DateUtil.TIMEFORMAT.YYYY_MM_DD_HH_MM_SS));
-		model.addAttribute("jumpUrlAlipay", CacheInternal.jumpUrlAlipay());
-		model.addAttribute("jumpUrlWechat", CacheInternal.jumpUrlWechat());
-		model.addAttribute("orderNo", order.getOrderNo());
-		model.addAttribute("money", qrcode.getMoney());
-		model.addAttribute("payButtonType", CacheInternal.payButtonType());
-		String nonceString = RandomUtil.getRandomChar(16);
-		String timestamp = DateUtil.getSystemTimeInt()+"";
-		Map<String,String> signParams = new HashMap<>();
-		signParams.put("nonceString", nonceString);
-		signParams.put("timestamp", timestamp);
-		signParams.put("publicKey", CacheInternal.payPublicKey());
-		String signpre = SignatureUtil.sortParams(signParams);
-		String sign = SignatureUtil.encodeMD5(signpre);	
-		model.addAttribute("sign", sign);
-		model.addAttribute("nonceString", nonceString);
-		model.addAttribute("timestamp", timestamp);
-		return "pay/zbpay";
-	}
-	
 	@ResponseBody
 	@RequestMapping("/notifyali/{account}/{money}")
 	public String notify(@PathVariable String account, @PathVariable String money) {
