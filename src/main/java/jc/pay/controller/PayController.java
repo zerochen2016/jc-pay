@@ -66,7 +66,15 @@ public class PayController {
 		model.addAttribute("jumpUrlWechat", CacheInternal.jumpUrlWechat());
 		model.addAttribute("orderNo", order.getOrderNo());
 		model.addAttribute("money", qrcode.getMoney());
-		model.addAttribute("payButtonType", pn.getShowType());
+		int payType = pn.getShowType();
+		if(payType == 1) {
+			model.addAttribute("payTypeString", "支付宝");
+		}else if(payType == 2) {
+			model.addAttribute("payTypeString", "微信");
+		}else if(payType == 3) {
+			model.addAttribute("payTypeString", "支付宝或微信");
+		}
+		model.addAttribute("payButtonType", payType);
 		String nonceString = RandomUtil.getRandomChar(16);
 		String timestamp = DateUtil.getSystemTimeInt()+"";
 		Map<String,String> signParams = new HashMap<>();
