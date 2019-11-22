@@ -71,7 +71,7 @@ dependencies {
     
 	implementation 'com.github.zerochen2016:jc-common:1.0.0.Alpha2'
 	
-	implementation 'com.github.zerochen2016:jc-mybatis-extension:1.0.0.Alpha12'
+	implementation 'com.github.zerochen2016:jc-mybatis-extension:1.0.0.Alpha13'
 	
 
 }
