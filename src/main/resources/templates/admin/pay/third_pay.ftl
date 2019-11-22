@@ -63,15 +63,15 @@
 					<td class="center">${record.mobile}</td>
 					<td class="center">${record.tradeNo}</td>
 					<td class="center">${record.money}</td>
-					<td class="center">${record.createTime?c?number?number_to_datetime?string("yyyy-MM-dd hh:mm:ss")}</td>
+					<td class="center">${record.createTime?c?number?number_to_datetime?iso_nz("GMT+08")}</td>
 					
 
 					<#if record.status == 1>
 						<td class="center">--</td>
-						<td class="center">${record.expireTime?c?number?number_to_datetime?string("yyyy-MM-dd hh:mm:ss")}</td>					
+						<td class="center">${record.expireTime?c?number?number_to_datetime?iso_nz("GMT+08")}</td>					
 						<td class="center">未支付</td>
 					<#elseif record.status == 2>
-						<td class="center">${record.updateTime?c?number?number_to_datetime?string("yyyy-MM-dd hh:mm:ss")}</td>
+						<td class="center">${record.updateTime?c?number?number_to_datetime?iso_nz("GMT+08")}</td>
 						<td class="center">--</td>					
 						<td class="center">已完成</td>
 					</#if>
@@ -116,7 +116,7 @@
 			dataType: "json",  
 			success: function (result) {  
 	   		if(result.code==0){
-	   			 	location.reload();
+	   			 	location.href = "/admin/thirdPay/pager";
 	   		}else{
 					alert(result.message);
 	   			}
