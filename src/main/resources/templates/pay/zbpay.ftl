@@ -64,7 +64,24 @@
             	color: white;
             	cursor:pointer;
             	float: right;
-			}			
+			}		
+			.maindiva3{
+				margin: 0 auto;
+				margin-left: 5%;
+				width: 90%;
+          		height: 50px;
+            	line-height: 50px;
+            	background: red;
+            	border: 1px red solid;
+            	border-radius: 10px;            	
+            	text-decoration: none;
+            	font-size: 20px;
+            	display: block;
+            	text-align: center;
+            	color: white;
+            	cursor:pointer;
+            	float: left;
+			}						
 		</style>
 </head>
 <body>
@@ -78,6 +95,7 @@
 		4.充值不到账请联系在线客服。
 		</p>		
 	</div>
+	<input  class="maindiva3" id="copy" value="点击复制金额" readonly="readonly"/>
 	<#if payButtonType == 1>
 		<a class="maindiva1" href="${jumpUrlAlipay}" >打开支付宝</a>	
 	<#elseif payButtonType == 2>
@@ -90,6 +108,22 @@
 </body>
 <script type="text/javascript" src="/static/js/jquery.min.js"></script>
 <script type="text/javascript">
+window.alert = function (name) {
+	const iframe = document.createElement('IFRAME');
+	iframe.style.display = 'none';
+	document.documentElement.appendChild(iframe);
+	window.frames[0].window.alert(name);
+	iframe.parentNode.removeChild(iframe);
+};
+$('#copy').click(function(){
+    var inputElement =  document.getElementById("copy");
+    inputElement.value="${money}";
+    inputElement.select();
+    document.execCommand("Copy");
+    inputElement.value="点击复制金额";
+    alert("复制成功，快去支付吧");
+});
+
 setInterval(function(){
 	$.ajax({  
 		url: '/pay/checkPay/${orderNo}',
