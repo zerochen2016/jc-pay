@@ -80,7 +80,25 @@
             	color: white;
             	cursor:pointer;
             	float: left;
-			}						
+			}			
+			.maindiva4{
+				margin: 0 auto;
+				margin-top: 30px;				
+				margin-left: 5%;
+				width: 90%;
+          		height: 50px;
+            	line-height: 50px;
+            	background: orange;
+            	border: 1px orange solid;
+            	border-radius: 10px;            	
+            	text-decoration: none;
+            	font-size: 20px;
+            	display: block;
+            	text-align: center;
+            	color: white;
+            	cursor:pointer;
+            	float: left;
+			}										
 		</style>
 </head>
 <body>
@@ -91,7 +109,7 @@
 		1.该二维码过期时间为：<span style="color: red">${expireTime}</span><br/>
 		2.请在有效时间内支付：<span style="color: red;font-size: 20px;font-weight: bold;">${money}元，不多不少，否则无法到账。</span><br/>
 		3.长按保存二维码或截屏，打开<span style="color: red;font-size: 20px;font-weight: bold;">${payTypeString}</span>扫码支付<br>
-		4.充值不到账请联系在线客服。
+		4.充值不到账请拿订单号联系在线客服。订单号: ${tradeNo}
 		</p>		
 	</div>
 	<input  class="maindiva3" id="copy" value="点击复制金额" readonly="readonly"/>
@@ -103,7 +121,7 @@
 		<a class="maindiva1" href="${jumpUrlAlipay}" >打开支付宝</a>
 		<a class="maindiva2" href="${jumpUrlWechat}" >打开微信</a>	
 	</#if>
-
+	<input  class="maindiva4" id="tradeNo" value="点击复制订单号" readonly="readonly"/>
 </body>
 <script type="text/javascript" src="/static/js/jquery.min.js"></script>
 <script type="text/javascript">
@@ -114,6 +132,16 @@ window.alert = function (name) {
 	window.frames[0].window.alert(name);
 	iframe.parentNode.removeChild(iframe);
 };
+
+$('#tradeNo').click(function(){
+    var inputElement =  document.getElementById("tradeNo");
+    inputElement.value="${tradeNo}";
+    inputElement.select();
+    document.execCommand("Copy");
+    inputElement.value="点击复制订单号";
+    alert("复制成功");
+});
+
 $('#copy').click(function(){
     var inputElement =  document.getElementById("copy");
     inputElement.value="${money}";
