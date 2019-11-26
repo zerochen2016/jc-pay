@@ -52,14 +52,15 @@ public class PayQrcodeServiceImpl implements PayQrcodeService {
 //				if((money + i) % 10 == 0) {
 //					continue;
 //				}
+//				String account = "laotie";
 //				String cutPriceMoney = new BigDecimal((money + i)).divide(new BigDecimal(100),2,RoundingMode.HALF_DOWN).toString();
 //				PayQrcodeExample example = new PayQrcodeExample();
-//				example.createCriteria().andMoneyEqualTo(cutPriceMoney);
+//				example.createCriteria().andMoneyEqualTo(cutPriceMoney).andAccountEqualTo(account);
 //				example.setLimitStart(0);
 //				example.setLimitLength(1);
 //				if(CollectionUtils.isEmpty(this.payQrcodeMapper.selectByExample(example))) {
 //					PayQrcode record = new PayQrcode();
-//					record.setAccount("laotie");
+//					record.setAccount(account);
 //					record.setCodeType(3);
 //					record.setMoneyKey(new BigDecimal(money).divide(new BigDecimal(100),2,RoundingMode.HALF_DOWN).toString());
 //					record.setMoney(cutPriceMoney);
@@ -74,46 +75,47 @@ public class PayQrcodeServiceImpl implements PayQrcodeService {
 //	}
 	
 //	@PostConstruct
-//	public void init() {
-//		List<Integer> moneyList = new ArrayList<Integer>();
-//		moneyList.add(3800);
-//		moneyList.add(6800);
-//		moneyList.add(9800);
-//		moneyList.add(15800);
-//		moneyList.add(19800);
-//		moneyList.add(39800);
-//		moneyList.add(49800);
-//		moneyList.add(79800);
-//		moneyList.add(99800);
-//		moneyList.add(199800);
-//		moneyList.add(300000);
-//		moneyList.add(500000);
-//		int cutPriceRange = 50;
-//		moneyList.stream().forEachOrdered(money->{
-//			for(int i = 0; i < cutPriceRange;i++) {
-//				if((money + i) % 10 == 0) {
-//					continue;
-//				}
-//				String cutPriceMoney = new BigDecimal((money + i)).divide(new BigDecimal(100),2,RoundingMode.HALF_DOWN).toString();
-//				PayQrcodeExample example = new PayQrcodeExample();
-//				example.createCriteria().andMoneyEqualTo(cutPriceMoney);
-//				example.setLimitStart(0);
-//				example.setLimitLength(1);
-//				if(CollectionUtils.isEmpty(this.payQrcodeMapper.selectByExample(example))) {
-//					PayQrcode record = new PayQrcode();
-//					record.setAccount("DAMING");
-//					record.setCodeType(3);
-//					record.setMoneyKey(new BigDecimal(money).divide(new BigDecimal(100),2,RoundingMode.HALF_DOWN).toString());
-//					record.setMoney(cutPriceMoney);
-//					record.setOktime(0l);
-//					record.setQrcodeUrl("https://xcmpic.oss-cn-hongkong.aliyuncs.com/yunshanghua.png");
-//					record.setStatus(1);
-//					record.setUserId("");
-//					this.payQrcodeMapper.insertSelective(record);	
-//				}
-//			}
-//		});
-//	}
+	public void init() {
+		List<Integer> moneyList = new ArrayList<Integer>();
+		moneyList.add(3800);
+		moneyList.add(6800);
+		moneyList.add(9800);
+		moneyList.add(15800);
+		moneyList.add(19800);
+		moneyList.add(39800);
+		moneyList.add(49800);
+		moneyList.add(79800);
+		moneyList.add(99800);
+		moneyList.add(199800);
+		moneyList.add(300000);
+		moneyList.add(500000);
+		int cutPriceRange = 50;
+		moneyList.stream().forEachOrdered(money->{
+			for(int i = 0; i < cutPriceRange;i++) {
+				if((money + i) % 10 == 0) {
+					continue;
+				}
+				String account = "ychat1";
+				String cutPriceMoney = new BigDecimal((money + i)).divide(new BigDecimal(100),2,RoundingMode.HALF_DOWN).toString();
+				PayQrcodeExample example = new PayQrcodeExample();
+				example.createCriteria().andMoneyEqualTo(cutPriceMoney).andAccountEqualTo(account);
+				example.setLimitStart(0);
+				example.setLimitLength(1);
+				if(CollectionUtils.isEmpty(this.payQrcodeMapper.selectByExample(example))) {
+					PayQrcode record = new PayQrcode();
+					record.setAccount(account);
+					record.setCodeType(3);
+					record.setMoneyKey(new BigDecimal(money).divide(new BigDecimal(100),2,RoundingMode.HALF_DOWN).toString());
+					record.setMoney(cutPriceMoney);
+					record.setOktime(0l);
+					record.setQrcodeUrl("https://xcmpic.oss-cn-hongkong.aliyuncs.com/ychat1.png");
+					record.setStatus(1);
+					record.setUserId("");
+					this.payQrcodeMapper.insertSelective(record);	
+				}
+			}
+		});
+	}
 	
 	@Override
 	public PageModel<PayQrcode> pagePayQrcode(PayQrcode record, PageModel<PayQrcode> pageModel) {
