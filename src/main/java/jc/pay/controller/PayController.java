@@ -65,6 +65,7 @@ public class PayController {
 		model.addAttribute("jumpUrlAlipay", CacheInternal.jumpUrlAlipay());
 		model.addAttribute("jumpUrlWechat", CacheInternal.jumpUrlWechat());
 		model.addAttribute("orderNo", order.getOrderNo());
+		model.addAttribute("tradeNo", order.getTradeNo());
 		model.addAttribute("money", qrcode.getMoney());
 		int payType = pn.getShowType();
 		if(payType == 1) {
