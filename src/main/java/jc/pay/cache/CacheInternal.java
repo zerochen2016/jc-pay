@@ -73,6 +73,10 @@ public class CacheInternal {
 		return CONFIG_INFO.get("PAY_PUBLIC_KEY");
 	}
 	
+	public static String extPublicKey(){
+		return CONFIG_INFO.get("EXT_PUBLIC_KEY");
+	}
+	
 	public static String mainColor() {
 		return CONFIG_INFO.get("MAIN_COLOR");
 	}
