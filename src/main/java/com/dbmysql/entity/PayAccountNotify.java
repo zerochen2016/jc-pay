@@ -7,6 +7,8 @@ public class PayAccountNotify {
 
     private Integer showType;
 
+    private String statisticNotify;
+
     public String getAccount() {
         return account;
     }
@@ -29,5 +31,13 @@ public class PayAccountNotify {
 
     public void setShowType(Integer showType) {
         this.showType = showType;
+    }
+
+    public String getStatisticNotify() {
+        return statisticNotify;
+    }
+
+    public void setStatisticNotify(String statisticNotify) {
+        this.statisticNotify = statisticNotify == null ? null : statisticNotify.trim();
     }
 }

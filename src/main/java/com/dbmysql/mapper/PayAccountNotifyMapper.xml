@@ -5,6 +5,7 @@
     <id column="account" jdbcType="VARCHAR" property="account" />
     <result column="notify" jdbcType="VARCHAR" property="notify" />
     <result column="show_type" jdbcType="INTEGER" property="showType" />
+    <result column="statistic_notify" jdbcType="VARCHAR" property="statisticNotify" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -65,7 +66,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    account, `notify`, show_type
+    account, `notify`, show_type, statistic_notify
   </sql>
   <select id="selectByExample" parameterType="com.dbmysql.entity.PayAccountNotifyExample" resultMap="BaseResultMap">
     select
@@ -101,10 +102,10 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.dbmysql.entity.PayAccountNotify">
-    insert into pay_account_notify (account, `notify`, show_type
-      )
-    values (#{account,jdbcType=VARCHAR}, #{notify,jdbcType=VARCHAR}, #{showType,jdbcType=INTEGER}
-      )
+    insert into pay_account_notify (account, `notify`, show_type, 
+      statistic_notify)
+    values (#{account,jdbcType=VARCHAR}, #{notify,jdbcType=VARCHAR}, #{showType,jdbcType=INTEGER}, 
+      #{statisticNotify,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.dbmysql.entity.PayAccountNotify">
     insert into pay_account_notify
@@ -118,6 +119,9 @@
       <if test="showType != null">
         show_type,
       </if>
+      <if test="statisticNotify != null">
+        statistic_notify,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="account != null">
@@ -128,6 +132,9 @@
       </if>
       <if test="showType != null">
         #{showType,jdbcType=INTEGER},
+      </if>
+      <if test="statisticNotify != null">
+        #{statisticNotify,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -149,6 +156,9 @@
       <if test="record.showType != null">
         show_type = #{record.showType,jdbcType=INTEGER},
       </if>
+      <if test="record.statisticNotify != null">
+        statistic_notify = #{record.statisticNotify,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -158,7 +168,8 @@
     update pay_account_notify
     set account = #{record.account,jdbcType=VARCHAR},
       `notify` = #{record.notify,jdbcType=VARCHAR},
-      show_type = #{record.showType,jdbcType=INTEGER}
+      show_type = #{record.showType,jdbcType=INTEGER},
+      statistic_notify = #{record.statisticNotify,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -172,13 +183,17 @@
       <if test="showType != null">
         show_type = #{showType,jdbcType=INTEGER},
       </if>
+      <if test="statisticNotify != null">
+        statistic_notify = #{statisticNotify,jdbcType=VARCHAR},
+      </if>
     </set>
     where account = #{account,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.dbmysql.entity.PayAccountNotify">
     update pay_account_notify
     set `notify` = #{notify,jdbcType=VARCHAR},
-      show_type = #{showType,jdbcType=INTEGER}
+      show_type = #{showType,jdbcType=INTEGER},
+      statistic_notify = #{statisticNotify,jdbcType=VARCHAR}
     where account = #{account,jdbcType=VARCHAR}
   </update>
 </mapper>

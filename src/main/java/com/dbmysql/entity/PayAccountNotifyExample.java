@@ -323,6 +323,76 @@ public class PayAccountNotifyExample {
             addCriterion("show_type not between", value1, value2, "showType");
             return (Criteria) this;
         }
+
+        public Criteria andStatisticNotifyIsNull() {
+            addCriterion("statistic_notify is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatisticNotifyIsNotNull() {
+            addCriterion("statistic_notify is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatisticNotifyEqualTo(String value) {
+            addCriterion("statistic_notify =", value, "statisticNotify");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatisticNotifyNotEqualTo(String value) {
+            addCriterion("statistic_notify <>", value, "statisticNotify");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatisticNotifyGreaterThan(String value) {
+            addCriterion("statistic_notify >", value, "statisticNotify");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatisticNotifyGreaterThanOrEqualTo(String value) {
+            addCriterion("statistic_notify >=", value, "statisticNotify");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatisticNotifyLessThan(String value) {
+            addCriterion("statistic_notify <", value, "statisticNotify");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatisticNotifyLessThanOrEqualTo(String value) {
+            addCriterion("statistic_notify <=", value, "statisticNotify");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatisticNotifyLike(String value) {
+            addCriterion("statistic_notify like", value, "statisticNotify");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatisticNotifyNotLike(String value) {
+            addCriterion("statistic_notify not like", value, "statisticNotify");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatisticNotifyIn(List<String> values) {
+            addCriterion("statistic_notify in", values, "statisticNotify");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatisticNotifyNotIn(List<String> values) {
+            addCriterion("statistic_notify not in", values, "statisticNotify");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatisticNotifyBetween(String value1, String value2) {
+            addCriterion("statistic_notify between", value1, value2, "statisticNotify");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatisticNotifyNotBetween(String value1, String value2) {
+            addCriterion("statistic_notify not between", value1, value2, "statisticNotify");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {
