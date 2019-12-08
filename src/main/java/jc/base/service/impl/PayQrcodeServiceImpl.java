@@ -52,7 +52,7 @@ public class PayQrcodeServiceImpl implements PayQrcodeService {
 //				if((money + i) % 10 == 0) {
 //					continue;
 //				}
-//				String account = "laotie";
+//				String account = "yyjchat";
 //				String cutPriceMoney = new BigDecimal((money + i)).divide(new BigDecimal(100),2,RoundingMode.HALF_DOWN).toString();
 //				PayQrcodeExample example = new PayQrcodeExample();
 //				example.createCriteria().andMoneyEqualTo(cutPriceMoney).andAccountEqualTo(account);
@@ -65,7 +65,7 @@ public class PayQrcodeServiceImpl implements PayQrcodeService {
 //					record.setMoneyKey(new BigDecimal(money).divide(new BigDecimal(100),2,RoundingMode.HALF_DOWN).toString());
 //					record.setMoney(cutPriceMoney);
 //					record.setOktime(0l);
-//					record.setQrcodeUrl("https://xcmpic.oss-cn-hongkong.aliyuncs.com/laotie.png");
+//					record.setQrcodeUrl("https://xcmpic.oss-cn-hongkong.aliyuncs.com/yyjchat.png");
 //					record.setStatus(1);
 //					record.setUserId("");
 //					this.payQrcodeMapper.insertSelective(record);	
@@ -95,7 +95,7 @@ public class PayQrcodeServiceImpl implements PayQrcodeService {
 				if((money + i) % 10 == 0) {
 					continue;
 				}
-				String account = "ychat1";
+				String account = "ychat2";
 				String cutPriceMoney = new BigDecimal((money + i)).divide(new BigDecimal(100),2,RoundingMode.HALF_DOWN).toString();
 				PayQrcodeExample example = new PayQrcodeExample();
 				example.createCriteria().andMoneyEqualTo(cutPriceMoney).andAccountEqualTo(account);
@@ -108,7 +108,7 @@ public class PayQrcodeServiceImpl implements PayQrcodeService {
 					record.setMoneyKey(new BigDecimal(money).divide(new BigDecimal(100),2,RoundingMode.HALF_DOWN).toString());
 					record.setMoney(cutPriceMoney);
 					record.setOktime(0l);
-					record.setQrcodeUrl("https://xcmpic.oss-cn-hongkong.aliyuncs.com/ychat1.png");
+					record.setQrcodeUrl("https://xcmpic.oss-cn-hongkong.aliyuncs.com/ychat2.png");
 					record.setStatus(1);
 					record.setUserId("");
 					this.payQrcodeMapper.insertSelective(record);	
