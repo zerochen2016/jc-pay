@@ -2,6 +2,7 @@ package jc.pay.controller;
 
 
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -93,16 +94,19 @@ public class PayController {
 	@ResponseBody
 	@RequestMapping("/notifyali/{account}/{money}")
 	public String notify(@PathVariable String account, @PathVariable String money) {
-		log.info("-------------------------------------------notify,pay/notify1,account={},money={}",account,money);
+		log.info("-------------------------------------------notifylog start,account={},money={}",account,money);
 		PayOrderInfo order = this.payOrderInfoServiceImpl.successCallback(account, money);
 		if(order == null) {
+			log.info("-------------------------------------------notifylog order null,account={},money={},orderMo={}",account,money,order.getOrderNo());
 			return JsonResult.setReturnStr(SystemReturn.FAIL);
 		}
+		log.info("-------------------------------------------notifylog order notNull,account={},money={},orderMo={}",account,money,order.getOrderNo());
 		PayAccountNotify pa = this.payAccountNotifyServiceImpl.getPayAccountNotifyByAccount(account);
 		if(pa == null || StringUtil.isEmpty(pa.getNotify())) {
+			log.info("-------------------------------------------notifylog notifyNull,account={},money={},notifyUrl={}",account,money,pa.getNotify());
 			return JsonResult.setReturnStr(SystemReturn.FAIL);
 		}
-		log.info("-------------------------------------------notify,pay/notify2,account={},money={}",account,money);
+		log.info("-------------------------------------------notifylog notifyNotNull,account={},money={},notifyUrl={}",account,money,pa.getNotify());
 		String url = pa.getNotify();
 		String nonceString = RandomUtil.getRandomChar(16);
 		String timestamp = DateUtil.getSystemTimeInt()+"";
@@ -118,10 +122,28 @@ public class PayController {
 		params.put("nonceString", nonceString);
 		params.put("timestamp", timestamp);
 		String result = HttpClientUtil.doPost(url, params, "utf-8");
-		log.info("----------------------------------------------notify3 result,result={}",result);
+		log.info("-------------------------------------------notifylog notifyResult,result={}",result);
+		this.doStatisticReport(order.getUserId(),order.getMoney(),pa.getStatisticNotify());
 		return JsonResult.setReturnStr(SystemReturn.OK);
 	}
 	
+	private void doStatisticReport(String userId, BigDecimal money,String staticNotify) {
+		String nonceString = RandomUtil.getRandomChar(16);
+		String timestamp = DateUtil.getSystemTimeInt()+"";
+		Map<String,String> signParams = new HashMap<>();
+		signParams.put("nonceString", nonceString);
+		signParams.put("timestamp", timestamp);
+		signParams.put("publicKey", CacheInternal.extPublicKey());
+		String signpre = SignatureUtil.sortParams(signParams);
+		String sign = SignatureUtil.encodeMD5(signpre);	
+		String url = staticNotify + userId + "/0.0.0.0/" + money.toString();
+		Map<String,Object> params = new HashMap<String, Object>();
+		params.put("sign", sign);
+		params.put("nonceString", nonceString);
+		params.put("timestamp", timestamp);
+		HttpClientUtil.doPost(url, params);
+	}
+
 	@ResponseBody
 	@RequestMapping("/checkPay/{orderNo}")
 	public String checkPay(@PathVariable String orderNo) {
