@@ -49,9 +49,9 @@ public class PayController {
 
 	@RequestMapping("/transfer")
 	public String transfer(HttpServletRequest request, Model model) {
-		model.addAttribute("cardNo", "6214857553966858");
-		model.addAttribute("bankName", "%E6%8B%9B%E5%95%86%E9%93%B6%E8%A1%8C");
-		model.addAttribute("bankAccount", "%E9%99%88%E9%94%A6%E5%8F%91");
+		model.addAttribute("cardNo", "");//银行账号
+		model.addAttribute("bankName", "");
+		model.addAttribute("bankAccount", "");
 		model.addAttribute("money", "0.01");
 		model.addAttribute("amount", "0.01");
 		model.addAttribute("bankMark", "CMB");
