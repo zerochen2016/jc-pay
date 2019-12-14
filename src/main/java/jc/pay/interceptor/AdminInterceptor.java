@@ -12,9 +12,9 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.dbmysql.entity.PayOperator;
+import com.pay.util.BeanFactory;
 
 import jc.base.service.impl.PayOperatorServiceImpl;
-import jc.common.util.BeanFactory;
 import jc.common.util.IPUtil;
 import jc.pay.cache.CacheInternal;
 import jc.pay.cache.CacheSession;

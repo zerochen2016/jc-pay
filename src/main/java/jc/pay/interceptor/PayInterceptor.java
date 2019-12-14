@@ -23,10 +23,16 @@ public class PayInterceptor implements HandlerInterceptor{
 
 	private static Logger logger = LoggerFactory.getLogger(PayInterceptor.class);
 	
+	private static final boolean IF_TEST = false;
+	
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 
+		if(IF_TEST) {
+			return true;
+		}
+		
 		if(checkSign(request)) {
 			return true;
 		}
