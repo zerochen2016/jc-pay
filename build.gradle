@@ -69,9 +69,9 @@ dependencies {
     
     compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.21'
     
-	implementation 'com.github.zerochen2016:jc-common:1.0.0.Alpha2'
+	compile 'com.github.zerochen2016:jc-common:1.0.2.RELEASE1'
 	
-	implementation 'com.github.zerochen2016:jc-mybatis-extension:1.0.0.Alpha13'
+	compile 'com.github.zerochen2016:jc-mybatis-extension:1.0.2.RELEASE'
 	
 
 }
