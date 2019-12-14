@@ -6,6 +6,8 @@ import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,7 @@ import jc.base.service.PayAccountNotifyService;
 import jc.base.service.PayOrderInfoService;
 import jc.base.service.PayQrcodeService;
 import jc.common.util.DateUtil;
+import jc.common.util.DomainUtil;
 import jc.common.util.HttpClientUtil;
 import jc.common.util.RandomUtil;
 import jc.common.util.SignatureUtil;
@@ -44,6 +47,18 @@ public class PayController {
 	@Autowired
 	PayAccountNotifyService payAccountNotifyServiceImpl;
 
+	@RequestMapping("/transfer")
+	public String transfer(HttpServletRequest request, Model model) {
+		model.addAttribute("cardNo", "6214857553966858");
+		model.addAttribute("bankName", "%E6%8B%9B%E5%95%86%E9%93%B6%E8%A1%8C");
+		model.addAttribute("bankAccount", "%E9%99%88%E9%94%A6%E5%8F%91");
+		model.addAttribute("money", "0.01");
+		model.addAttribute("amount", "0.01");
+		model.addAttribute("bankMark", "CMB");
+		model.addAttribute("jumpUrl", new StringBuffer(DomainUtil.getHost(request)).append("pay/transfer"));
+		return "pay/transfer";
+	}
+	
 	@RequestMapping("/page/{account}/{userId}/{mobile}/{tradeNo}/{moneyKey}")
 	public String page(@PathVariable String account, @PathVariable String moneyKey,@PathVariable String mobile,
 			@PathVariable String tradeNo, @PathVariable String userId, Model model) {
