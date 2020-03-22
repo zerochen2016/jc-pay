@@ -112,7 +112,7 @@ public class PayController {
 		log.info("-------------------------------------------notifylog start,account={},money={}",account,money);
 		PayOrderInfo order = this.payOrderInfoServiceImpl.successCallback(account, money);
 		if(order == null) {
-			log.info("-------------------------------------------notifylog order null,account={},money={},orderMo={}",account,money,order.getOrderNo());
+			log.info("-------------------------------------------notifylog order null,account={},money={}",account,money);
 			return JsonResult.setReturnStr(SystemReturn.FAIL);
 		}
 		log.info("-------------------------------------------notifylog order notNull,account={},money={},orderMo={}",account,money,order.getOrderNo());
