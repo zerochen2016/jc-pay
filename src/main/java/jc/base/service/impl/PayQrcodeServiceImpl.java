@@ -31,51 +31,9 @@ public class PayQrcodeServiceImpl implements PayQrcodeService {
 	@Autowired
 	PayQrcodeMapper payQrcodeMapper;
 	
-//	@PostConstruct
-//	public void init() {
-//		List<Integer> moneyList = new ArrayList<Integer>();
-//		moneyList.add(3900);
-//		moneyList.add(6900);
-//		moneyList.add(9900);
-//		moneyList.add(14900);
-//		moneyList.add(19900);
-//		moneyList.add(39900);
-//		moneyList.add(49900);
-//		moneyList.add(79900);
-//		moneyList.add(99900);
-//		moneyList.add(199900);
-//		moneyList.add(299900);
-//		moneyList.add(499900);
-//		int cutPriceRange = 50;
-//		moneyList.stream().forEachOrdered(money->{
-//			for(int i = 0; i < cutPriceRange;i++) {
-//				if((money + i) % 10 == 0) {
-//					continue;
-//				}
-//				String account = "yyjchat";
-//				String cutPriceMoney = new BigDecimal((money + i)).divide(new BigDecimal(100),2,RoundingMode.HALF_DOWN).toString();
-//				PayQrcodeExample example = new PayQrcodeExample();
-//				example.createCriteria().andMoneyEqualTo(cutPriceMoney).andAccountEqualTo(account);
-//				example.setLimitStart(0);
-//				example.setLimitLength(1);
-//				if(CollectionUtils.isEmpty(this.payQrcodeMapper.selectByExample(example))) {
-//					PayQrcode record = new PayQrcode();
-//					record.setAccount(account);
-//					record.setCodeType(3);
-//					record.setMoneyKey(new BigDecimal(money).divide(new BigDecimal(100),2,RoundingMode.HALF_DOWN).toString());
-//					record.setMoney(cutPriceMoney);
-//					record.setOktime(0l);
-//					record.setQrcodeUrl("https://xcmpic.oss-cn-hongkong.aliyuncs.com/yyjchat.png");
-//					record.setStatus(1);
-//					record.setUserId("");
-//					this.payQrcodeMapper.insertSelective(record);	
-//				}
-//			}
-//		});
-//	}
 	
 //	@PostConstruct
-	public void init() {
+	public void init2() {
 		List<Integer> moneyList = new ArrayList<Integer>();
 		moneyList.add(3800);
 		moneyList.add(6800);
@@ -108,7 +66,7 @@ public class PayQrcodeServiceImpl implements PayQrcodeService {
 					record.setMoneyKey(new BigDecimal(money).divide(new BigDecimal(100),2,RoundingMode.HALF_DOWN).toString());
 					record.setMoney(cutPriceMoney);
 					record.setOktime(0l);
-					record.setQrcodeUrl("https://xcmpic.oss-cn-hongkong.aliyuncs.com/ychat2.png");
+					record.setQrcodeUrl("https://qrcode0324.oss-cn-hongkong.aliyuncs.com/all20200426.png");
 					record.setStatus(1);
 					record.setUserId("");
 					this.payQrcodeMapper.insertSelective(record);	

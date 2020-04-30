@@ -14,16 +14,16 @@ spring:
         content-type: text/html  
         cache: false
     redis: 
-        host: r-j6ctq1q0x1hutvddecpd.redis.rds.aliyuncs.com 
+        host:  r-j6cucog7mgz1iss67lpd.redis.rds.aliyuncs.com 
         password: FGHcvb1@
         port: 6379        
 
 mysql:
     datasource: 
         master: 
-            url: jdbc:mysql://pc-j6c94s8nz3c3yqb72io.rwlb.rds.aliyuncs.com:3306/jc_pay?characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B8&useSSL=false 
-            username: xcmzb
-            password: FGHcvb1@@
+            url: jdbc:mysql://pc-j6c1yiru8u335f827xx.rwlb.rds.aliyuncs.com:3306/jc_pay?characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B8&useSSL=false 
+            username: livezb
+            password: livezb1@
             driverClassName: com.mysql.jdbc.Driver
             loginTimeout: 30
             maxIdle: 15
