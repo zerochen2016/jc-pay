@@ -11,14 +11,16 @@ public class DBGenerate {
 	public static void main(String args[]) throws Exception {
 //		ServiceGenerator.generate("pay_operator");
 		
-		File file = new File("/Users/zero/Desktop/all20200426.png");
-		QRCodeUtil.encode("https://s.zjkccb.com/aps/buybal-api/v1.0/cashier/juheRedirect?qrCode=https%3A%2F%2Fqr.95516.com%2F04901380%2F457591", "", file, true);
+//		File file = new File("/Users/zero/Desktop/all20200426.png");
+//		QRCodeUtil.encode("https://s.zjkccb.com/aps/buybal-api/v1.0/cashier/juheRedirect?qrCode=https%3A%2F%2Fqr.95516.com%2F04901380%2F457591", "", file, true);
 //		
-//		for(int i = 1; i<21; i+=2) {
+//		for(int i = 2; i<21; i+=2) {
 //			
 //			System.out.println("yshxym"+i+".xyz");
+//			System.out.println("ybhym"+i+".xyz");
 //		}
 		
 //		System.out.println(SignatureUtil.encodeMD5("QWEasdpay1."));
+		
 	}
 }
